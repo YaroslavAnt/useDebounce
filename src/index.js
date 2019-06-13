@@ -15,7 +15,7 @@ function useDebounce(value, delay) {
     setTimeout(() => setNewValue(value), delay);
   }, [value, delay]);
 
-  return newValue;
+  return newValue === value && newValue;
 }
 
 function App() {
