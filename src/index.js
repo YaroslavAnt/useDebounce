@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 
 import "./styles.css";
@@ -9,7 +9,13 @@ import "./styles.css";
 // you may change code only in function below
 // also you can import whatever you need
 function useDebounce(value, delay) {
-  return value;
+  const [newValue, setNewValue] = useState(null);
+
+  useEffect(() => {
+    setTimeout(() => setNewValue(value), delay);
+  }, [value, delay]);
+
+  return newValue;
 }
 
 function App() {
