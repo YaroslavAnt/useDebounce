@@ -12,10 +12,11 @@ function useDebounce(value, delay) {
   const [newValue, setNewValue] = useState(null);
 
   useEffect(() => {
-    setTimeout(() => setNewValue(value), delay);
+    var id = setTimeout(() => setNewValue(value), delay);
+    return () => clearInterval(id);
   }, [value, delay]);
 
-  return newValue === value && newValue;
+  return newValue;
 }
 
 function App() {
